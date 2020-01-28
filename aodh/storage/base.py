@@ -203,3 +203,15 @@ class Connection(object):
         """
         raise aodh.NotImplementedError('Clearing alarm history '
                                        'not implemented')
+
+    @staticmethod
+    def get_quotas(project_id, user_id=None):
+        """Get resource quota for the given user."""
+        raise aodh.NotImplementedError('Getting resource quota not '
+                                       'implemented')
+
+    @staticmethod
+    def set_quotas(project_id, quotas, user_id=''):
+        """Set resource quota for the given user."""
+        raise aodh.NotImplementedError('Setting resource quota not '
+                                       'implemented')

@@ -131,13 +131,12 @@ class AlarmChange(Base):
 class Quota(Base):
     __tablename__ = 'quota'
     __table_args__ = (
-        sa.UniqueConstraint('project_id', 'user_id', 'resource'),
-        Index('ix_%s_resource_project_id_user_id' % __tablename__,
-              'resource', 'project_id', 'user_id'),
+        sa.UniqueConstraint('project_id', 'resource'),
+        Index('ix_%s_project_id_resource' % __tablename__,
+              'project_id', 'resource'),
     )
 
     id = Column(String(36), primary_key=True, default=uuidutils.generate_uuid)
     project_id = Column(String(128))
-    user_id = Column(String(128))
     resource = Column(String(50))
     limit = Column(Integer)

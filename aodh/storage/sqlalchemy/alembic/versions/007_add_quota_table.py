@@ -33,12 +33,11 @@ def upgrade():
         sa.Column('id', sa.String(length=36), nullable=False),
         sa.Column('resource', sa.String(length=50), nullable=False),
         sa.Column('project_id', sa.String(length=128), nullable=False),
-        sa.Column('user_id', sa.String(length=128), nullable=True),
         sa.Column('limit', sa.Integer, nullable=False),
         sa.PrimaryKeyConstraint('id'),
-        sa.UniqueConstraint('project_id', 'user_id', 'resource'),
+        sa.UniqueConstraint('project_id', 'resource'),
         sa.Index(
-            'ix_quota_resource_project_id_user_id',
-            'resource', 'project_id', 'user_id'
+            'ix_quota_project_id_resource',
+            'project_id', 'resource'
         )
     )
